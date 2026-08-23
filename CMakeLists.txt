@@ -49,6 +49,6 @@ install(
         README.ko.md
         INSTALLATION.md
         LICENSE
-        Manual Register.reg
+        "Manual Register.reg"
         DESTINATION .
 )
