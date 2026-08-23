@@ -47,6 +47,8 @@ install(
         FILES
         README.md
         README.ko.md
+        INSTALLATION.md
         LICENSE
+        Manual Register.reg
         DESTINATION .
 )

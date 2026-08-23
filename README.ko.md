@@ -2,42 +2,9 @@
 
 Wine/Proton용 초저지연 ASIO 드라이버: Windows ASIO를 Linux ALSA에 직접 연결합니다. 주로 리눅스 리듬 게이머들을 위해 만들어졌습니다.
 
-## 설치 방법 (최종 사용자용)
+## 설치 방법
 
-### 종속성
-
-#### 필수
-
-1. 파이썬 3.x
-2. umu-launcher
-3. vdf 파이썬 패키지
-
-아치 리눅스에서는 다음과 같이 설치합니다. (`multilib` 필수)
-
-```shell
-sudo pacman -S python python-vdf umu-launcher
-```
-
-#### 선택
-
-1. RealtimeKit (`rtkit-daemon`) (권장)
-
-### 설치 과정
-
-> [!caution]
-> 이 프로젝트는 와인/프로톤 11.0 이상만 지원합니다.
-
-1. [Release](https://github.com/na1307/WineDirectALSA/releases/latest) 페이지에서 최신 tarball을 다운받습니다.
-2. 다운받은 tarball의 압축을 풉니다.
-3. `x86_64-{unix|windows}` 폴더를 다음 두곳 중 한곳으로 복사합니다.
-   * `/opt/WineDirectALSA/` (root 권한 필요)
-   * `$HOME/.local/lib/wine/`
-4. 동봉된 `wda-install`을 실행합니다. 설치 스크립트의 지시를 따르세요.
-5. 스팀의 게임 속성에서 실행 옵션을 다음으로 설정합니다.
-   ```shell
-   WINEDLLPATH=/opt/WineDirectALSA %command% # 혹은 WINEDLLPATH=~/.local/lib/wine/ %command%
-   ```
-6. 이제 게임을 실행하세요!
+[INSTALLATION.md](./INSTALLATION.md)를 참조하세요.
 
 ## 제한 사항
 

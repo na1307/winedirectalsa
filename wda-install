@@ -2,13 +2,16 @@
 from pathlib import Path
 from sys import argv
 from typing import Literal
+from shutil import copytree
 
 import os
 import subprocess
 import vdf
 
+HOME_LIB_WINE = Path.home() / '.local' / 'lib' / 'wine'
+
 WDA_PATHS = [
-    Path.home() / '.local' / 'lib' / 'wine',
+    HOME_LIB_WINE,
     Path('/opt/WineDirectALSA')
 ]
 
@@ -181,9 +184,10 @@ def interactive(wdapath: Path) -> None:
     print("2. Install to the Steam Proton Wine Prefix")
     #print("3. Install to the non-Steam Proton Wine Prefix")
     print("4. Run control panel only to the Steam Proton Wine Prefix")
+    print("5. Quit")
     print()
 
-    choice = choose("Choose one: ", 4)
+    choice = choose("Choose one: ", 5)
 
     if choice == 0:
         install_to_default_wine_prefix(wdapath)
@@ -197,19 +201,26 @@ def interactive(wdapath: Path) -> None:
         datas = get_steam_datas()
 
         run_control(wdapath, datas['appid'], datas['proton'], datas['compatdata'])
+    elif choice == 4:
+        return
 
+
+def check_or_copy() -> Path:
+    for path in WDA_PATHS:
+        if path.is_dir() and (path / "x86_64-windows" / "winedirectalsa.dll").is_file():
+            return path
+
+    HOME_LIB_WINE.mkdir(parents=True, exist_ok=True)
+    copytree("x86_64-unix", HOME_LIB_WINE / "x86_64-unix")
+    copytree("x86_64-windows", HOME_LIB_WINE / "x86_64-windows")
+
+    return HOME_LIB_WINE
 
 def main():
-    for path in WDA_PATHS:
-        if path.is_dir():
-            args_len = len(argv)
+    wda_path = check_or_copy()
 
-            if args_len == 1:
-                interactive(path)
-
-            return
-
-    raise Exception("WineDirectALSA not found!")
+    if len(argv) == 1:
+        interactive(wda_path)
 
 
 if __name__ == "__main__":

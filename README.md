@@ -2,42 +2,9 @@
 
 An ultra-low-latency ASIO driver for Wine/Proton that connects Windows ASIO directly to Linux ALSA. It is mainly designed for Linux rhythm game players.
 
-## Installation (for end users)
+## Installation
 
-### Dependencies
-
-#### Required
-
-1. Python 3.x
-2. umu-launcher
-3. The `vdf` Python package
-
-On Arch Linux, install them as follows. (`multilib` is required.)
-
-```shell
-sudo pacman -S python python-vdf umu-launcher
-```
-
-#### Optional
-
-1. RealtimeKit (`rtkit-daemon`) (Recommended)
-
-### Installation steps
-
-> [!caution]
-> This project only supports Wine/Proton 11.0 or later.
-
-1. Download the latest tarball from the [Releases](https://github.com/na1307/WineDirectALSA/releases/latest) page.
-2. Extract the downloaded tarball.
-3. Copy the `x86_64-{unix|windows}` directories to one of the following locations:
-   * `/opt/WineDirectALSA/` (requires root privileges)
-   * `$HOME/.local/lib/wine/`
-4. Run the included `wda-install` script and follow its instructions.
-5. In the game's Steam properties, set the launch options as follows:
-   ```shell
-   WINEDLLPATH=/opt/WineDirectALSA %command% # or WINEDLLPATH=~/.local/lib/wine/ %command%
-   ```
-6. Launch the game!
+See [INSTALLATION.md](./INSTALLATION.md).
 
 ## Limitations
 
@@ -107,14 +74,17 @@ Test system: 48 kHz, 64-frame ASIO buffer, RTL Utility 0.5.2, Realtek ALC897
 ### Build steps
 
 1. First, use xwin to download the Windows SDK:
+
    ```shell
    xwin --arch x86_64 --accept-license splat --include-debug-libs --preserve-ms-arch-notation --output <path>
    ```
 2. Configure the project with CMake:
+
    ```shell
    cmake -G Ninja -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo -DXWIN_SPLAT_PATH=<path>
    ```
 3. Build the project:
+
    ```shell
    cmake --build build
    ```
