@@ -54,7 +54,7 @@ HRESULT DllRegisterServer() {
         return E_UNEXPECTED;
     }
 
-    const std::string desc("WineDirectALSA Driver");
+    const std::string desc("winedirectalsa Driver");
 
     if (RegSetValueExA(clsidKey, nullptr, 0, REG_SZ, reinterpret_cast<const BYTE*>(desc.c_str()), desc.length() + 1) != ERROR_SUCCESS) {
         return E_UNEXPECTED;
@@ -86,7 +86,7 @@ HRESULT DllRegisterServer() {
 
     HKEY wdaKey;
 
-    if (RegCreateKeyExA(HKEY_LOCAL_MACHINE, "SOFTWARE\\ASIO\\WineDirectALSA", 0, nullptr, 0, KEY_WRITE, nullptr, &wdaKey, nullptr) != ERROR_SUCCESS) {
+    if (RegCreateKeyExA(HKEY_LOCAL_MACHINE, "SOFTWARE\\ASIO\\winedirectalsa", 0, nullptr, 0, KEY_WRITE, nullptr, &wdaKey, nullptr) != ERROR_SUCCESS) {
         return E_UNEXPECTED;
     }
 
@@ -106,7 +106,7 @@ HRESULT DllRegisterServer() {
 }
 
 HRESULT DllUnregisterServer() {
-    auto result = RegDeleteTreeA(HKEY_LOCAL_MACHINE, "SOFTWARE\\ASIO\\WineDirectALSA");
+    auto result = RegDeleteTreeA(HKEY_LOCAL_MACHINE, "SOFTWARE\\ASIO\\winedirectalsa");
 
     if (result != ERROR_SUCCESS && result != ERROR_FILE_NOT_FOUND) {
         return E_UNEXPECTED;

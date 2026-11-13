@@ -115,7 +115,7 @@ static void PopulateDeviceLists(HWND output, HWND input, const DialogState &stat
 static void LoadSettings(std::string &output_id, std::string &input_id) {
     HKEY wdaKey;
 
-    if (RegOpenKeyExA(HKEY_CURRENT_USER, "SOFTWARE\\WineDirectALSA", 0, KEY_READ, &wdaKey) != ERROR_SUCCESS) {
+    if (RegOpenKeyExA(HKEY_CURRENT_USER, "SOFTWARE\\winedirectalsa", 0, KEY_READ, &wdaKey) != ERROR_SUCCESS) {
         return;
     }
 
@@ -162,7 +162,7 @@ static INT_PTR CALLBACK ControlDialogProc(HWND hWnd, UINT uMsg, WPARAM wParam, L
             LoadSettings(output_id, input_id);
 
             if (!RefreshDevices(state)) {
-                MessageBoxA(hWnd, "Failed to enumerate ALSA devices.", "WineDirectALSA", MB_OK | MB_ICONERROR);
+                MessageBoxA(hWnd, "Failed to enumerate ALSA devices.", "winedirectalsa", MB_OK | MB_ICONERROR);
             }
 
             PopulateDeviceLists(output, input, state, output_id, input_id);
@@ -195,7 +195,7 @@ static INT_PTR CALLBACK ControlDialogProc(HWND hWnd, UINT uMsg, WPARAM wParam, L
 
                 auto code = RegCreateKeyExA(
                     HKEY_CURRENT_USER,
-                    "SOFTWARE\\WineDirectALSA",
+                    "SOFTWARE\\winedirectalsa",
                     0,
                     nullptr,
                     0,
@@ -272,7 +272,7 @@ static INT_PTR CALLBACK ControlDialogProc(HWND hWnd, UINT uMsg, WPARAM wParam, L
                 const auto input_id = GetSelectedDeviceId(input, state);
 
                 if (!RefreshDevices(state)) {
-                    MessageBoxA(hWnd, "Failed to refresh ALSA devices.", "WineDirectALSA", MB_OK | MB_ICONERROR);
+                    MessageBoxA(hWnd, "Failed to refresh ALSA devices.", "winedirectalsa", MB_OK | MB_ICONERROR);
 
                     return TRUE;
                 }

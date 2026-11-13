@@ -1,4 +1,4 @@
-# WineDirectALSA
+# winedirectalsa
 
 An ultra-low-latency ASIO driver for Wine/Proton that connects Windows ASIO directly to Linux ALSA. It is mainly designed for Linux rhythm game players.
 
@@ -8,7 +8,7 @@ See [INSTALLATION.md](./INSTALLATION.md).
 
 ## Limitations
 
-WineDirectALSA accesses the selected ALSA `hw:` device directly and does not perform sample-format conversion or resampling. The device must therefore natively support stereo, 48 kHz, signed 32-bit little-endian PCM (`SND_PCM_FORMAT_S32_LE`).
+winedirectalsa accesses the selected ALSA `hw:` device directly and does not perform sample-format conversion or resampling. The device must therefore natively support stereo, 48 kHz, signed 32-bit little-endian PCM (`SND_PCM_FORMAT_S32_LE`).
 
 `S32_LE` describes the sample container format and does not necessarily mean that the device provides true 32-bit conversion resolution. Many onboard HDA devices support this format—the Realtek ALC897 used for testing does—but some low-cost USB audio devices only support 16-bit or 24-bit formats.
 
@@ -44,7 +44,7 @@ arecord \
   /dev/null
 ```
 
-If both commands are completed without errors, the device supports the key hardware requirements of WineDirectALSA.
+If both commands are completed without errors, the device supports the key hardware requirements of winedirectalsa.
 
 ## Benchmark
 
@@ -52,12 +52,12 @@ Test system: 48 kHz, 64-frame ASIO buffer, RTL Utility 0.5.2, Realtek ALC897
 
 | Driver         |           Reported RTL |           Measured RTL |             Difference |
 | -------------- | ---------------------: | ---------------------: | ---------------------: |
-| WineDirectALSA | 160 samples / 3.333 ms | 174 samples / 3.625 ms |  14 samples / 0.292 ms |
+| winedirectalsa | 160 samples / 3.333 ms | 174 samples / 3.625 ms |  14 samples / 0.292 ms |
 | PipeASIO       | 128 samples / 2.667 ms | 290 samples / 6.033 ms | 162 samples / 3.367 ms |
 
 10 consecutive measurements:
 
-* WineDirectALSA: 174 / 174 / 174 / 174 / 174 / 174 / 174 / 174 / 174 / 174
+* winedirectalsa: 174 / 174 / 174 / 174 / 174 / 174 / 174 / 174 / 174 / 174
 * PipeASIO: 286 / 285 / 289 / 290 / 289 / 292 / 292 / 292 / 291 / 290
 
 ## Building
@@ -91,4 +91,4 @@ Test system: 48 kHz, 64-frame ASIO buffer, RTL Utility 0.5.2, Realtek ALC897
 
 ## License
 
-WineDirectALSA itself is licensed under GPL-3.0-only. Dependencies used by this project may be licensed differently.
+winedirectalsa itself is licensed under GPL-3.0-only. Dependencies used by this project may be licensed differently.

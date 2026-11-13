@@ -9,7 +9,7 @@ set(CMAKE_CXX_COMPILER_WORKS 1)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-project(WineDirectALSAWindows LANGUAGES C CXX)
+project(winedirectalsawindows LANGUAGES C CXX)
 
 add_library(winedirectalsa SHARED
         src/dllmain.cpp

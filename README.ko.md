@@ -1,4 +1,4 @@
-# WineDirectALSA
+# winedirectalsa
 
 Wine/Proton용 초저지연 ASIO 드라이버: Windows ASIO를 Linux ALSA에 직접 연결합니다. 주로 리눅스 리듬 게이머들을 위해 만들어졌습니다.
 
@@ -8,7 +8,7 @@ Wine/Proton용 초저지연 ASIO 드라이버: Windows ASIO를 Linux ALSA에 직
 
 ## 제한 사항
 
-WineDirectALSA는 선택한 ALSA 하드웨어 장치에 직접 접근하며, 샘플 형식 변환이나 리샘플링을 수행하지 않습니다. 따라서 장치 자체에서 스테레오, 48 kHz, 32비트 부호 있는 리틀 엔디안 PCM 형식(`SND_PCM_FORMAT_S32_LE`)을 지원해야 합니다.
+winedirectalsa는 선택한 ALSA 하드웨어 장치에 직접 접근하며, 샘플 형식 변환이나 리샘플링을 수행하지 않습니다. 따라서 장치 자체에서 스테레오, 48 kHz, 32비트 부호 있는 리틀 엔디안 PCM 형식(`SND_PCM_FORMAT_S32_LE`)을 지원해야 합니다.
 
 `S32_LE`는 샘플을 저장하는 컨테이너 형식을 뜻하며, 장치의 실제 변환 정밀도가 32비트라는 의미는 아닙니다. 테스트에 사용된 Realtek ALC897을 비롯한 많은 온보드 HDA 장치가 이 형식을 지원하지만, 일부 저가형 USB 오디오 장치는 16비트 또는 24비트 형식만 지원합니다.
 
@@ -46,7 +46,7 @@ arecord \
   /dev/null
 ```
 
-두 명령이 오류 없이 완료되면 해당 장치는 WineDirectALSA가 요구하는 주요 하드웨어 조건을 지원합니다.
+두 명령이 오류 없이 완료되면 해당 장치는 winedirectalsa가 요구하는 주요 하드웨어 조건을 지원합니다.
 
 ## Benchmark
 
@@ -54,13 +54,13 @@ Test system: 48 kHz, 64-frame ASIO buffer, RTL Utility 0.5.2, Realtek ALC897
 
 | Driver         |           Reported RTL |           Measured RTL |             Difference |
 | -------------- | ---------------------: | ---------------------: | ---------------------: |
-| WineDirectALSA | 160 samples / 3.333 ms | 174 samples / 3.625 ms |  14 samples / 0.292 ms |
+| winedirectalsa | 160 samples / 3.333 ms | 174 samples / 3.625 ms |  14 samples / 0.292 ms |
 | PipeASIO       | 128 samples / 2.667 ms | 290 samples / 6.033 ms | 162 samples / 3.367 ms |
 
 
 10 consecutive measurements:
 
-* WineDirectALSA: 174 / 174 / 174 / 174 / 174 / 174 / 174 / 174 / 174 / 174
+* winedirectalsa: 174 / 174 / 174 / 174 / 174 / 174 / 174 / 174 / 174 / 174
 * PipeASIO: 286 / 285 / 289 / 290 / 289 / 292 / 292 / 292 / 291 / 290
 
 ## 빌드 방법
@@ -90,5 +90,5 @@ Test system: 48 kHz, 64-frame ASIO buffer, RTL Utility 0.5.2, Realtek ALC897
    ```
 
 ## License
-WineDirectALSA 자체는 GPL-3.0-only 라이선스입니다. 이 프로젝트가 사용하는 종속성은 다를 수 있습니다.
+winedirectalsa 자체는 GPL-3.0-only 라이선스입니다. 이 프로젝트가 사용하는 종속성은 다를 수 있습니다.
 

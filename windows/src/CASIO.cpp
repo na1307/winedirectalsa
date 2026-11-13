@@ -167,7 +167,7 @@ ASIO::Bool CASIO::init(void *sysHandle) {
     sys_handle = static_cast<HWND>(sysHandle);
     HKEY wdaKey;
 
-    if (RegOpenKeyExA(HKEY_CURRENT_USER, "SOFTWARE\\WineDirectALSA", 0, KEY_READ, &wdaKey) != ERROR_SUCCESS) {
+    if (RegOpenKeyExA(HKEY_CURRENT_USER, "SOFTWARE\\winedirectalsa", 0, KEY_READ, &wdaKey) != ERROR_SUCCESS) {
         return ASIO::Bool::False;
     }
 
@@ -214,7 +214,7 @@ void CASIO::getDriverName(char *name) {
         return;
     }
 
-    strncpy_s(name, 16, "WineDirectALSA", 31);
+    strncpy_s(name, 16, "winedirectalsa", 31);
 
     name[31] = '\0';
 }

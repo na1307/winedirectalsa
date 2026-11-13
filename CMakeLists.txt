@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 4.4)
 
-project(WineDirectALSA LANGUAGES NONE)
+project(winedirectalsa LANGUAGES NONE)
 
 include(ExternalProject)
 

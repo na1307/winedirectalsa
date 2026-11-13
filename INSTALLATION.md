@@ -1,4 +1,4 @@
-# WineDirectALSA Installation Guide
+# winedirectalsa Installation Guide
 
 ## Install for Steam games
 
@@ -38,12 +38,13 @@ sudo pacman -S protontricks
 > This project only supports Wine/Proton 11.0 or later.
 
 1. If the target game has never been run, run it once.
-2. Download the latest tarball from the [Releases](https://github.com/na1307/WineDirectALSA/releases/latest) page.
+2. Download the latest tarball from the [Releases](https://github.com/na1307/winedirectalsa/releases/latest) page.
 3. Extract the downloaded tarball.
 4. (Optional) Copy the `x86_64-{unix|windows}` directories to one of the following locations:
 
    * `$HOME/.local/lib/wine/` (Recommended)
-   * `/opt/WineDirectALSA/` (requires root privileges)
+   * `/usr/lib/winedirectalsa/` (requires root privileges)
+   * `/opt/winedirectalsa/` (requires root privileges)
 
    If you do not copy the files manually, the script will copy them for you.
 5. Run the included `wda-install` script.
@@ -67,6 +68,6 @@ sudo pacman -S protontricks
 7. In the game's Steam properties, set the launch options as follows:
 
    ```shell
-   WINEDLLPATH=~/.local/lib/wine/ %command% # or WINEDLLPATH=/opt/WineDirectALSA %command%
+   WINEDLLPATH=~/.local/lib/wine/ %command% # or WINEDLLPATH=/opt/winedirectalsa %command%
    ```
 8. Enjoy!

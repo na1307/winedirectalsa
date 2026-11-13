@@ -19,7 +19,7 @@ namespace {
 
     struct reservation {
         int priority = reservation_priority;
-        std::string application_name = "WineDirectALSA";
+        std::string application_name = "winedirectalsa";
         std::string application_device_name;
         std::string service_name;
         std::string object_path;
@@ -38,7 +38,7 @@ namespace {
             return r;
         }
 
-        // WineDirectALSA cannot safely transfer an active ASIO stream to
+        // winedirectalsa cannot safely transfer an active ASIO stream to
         // another process. Use a non-preemptible reservation instead of
         // promising a release that cannot be completed atomically.
         const bool accept = requested_priority > reservation_priority;

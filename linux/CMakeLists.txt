@@ -9,7 +9,7 @@ set(CMAKE_CXX_COMPILER_WORKS 1)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-project(WineDirectALSALinux LANGUAGES C CXX)
+project(winedirectalsalinux LANGUAGES C CXX)
 
 find_package(PkgConfig REQUIRED)
 find_package(ALSA REQUIRED)

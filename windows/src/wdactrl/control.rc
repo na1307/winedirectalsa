@@ -3,7 +3,7 @@
 
 IDD_CONTROL_PANEL DIALOGEX 0, 0, 260, 105
 STYLE DS_SETFONT | DS_CENTER | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "WineDirectALSA Control Panel"
+CAPTION "winedirectalsa Control Panel"
 FONT 9, "Segoe UI"
 BEGIN
     LTEXT           "Output device:", IDC_STATIC,

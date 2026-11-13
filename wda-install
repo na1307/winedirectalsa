@@ -12,7 +12,8 @@ HOME_LIB_WINE = Path.home() / '.local' / 'lib' / 'wine'
 
 WDA_PATHS = [
     HOME_LIB_WINE,
-    Path('/opt/WineDirectALSA')
+    Path('/usr/lib/winedirectalsa'),
+    Path('/opt/winedirectalsa')
 ]
 
 
@@ -178,7 +179,7 @@ def get_steam_datas() -> dict[Literal['appid', 'compatdata', 'proton'], int | Pa
 
 
 def interactive(wdapath: Path) -> None:
-    print("Welcome to the WineDirectALSA installer.")
+    print("Welcome to the winedirectalsa installer.")
     print()
     #print("1. Install to the Default Wine Prefix")
     print("2. Install to the Steam Proton Wine Prefix")
