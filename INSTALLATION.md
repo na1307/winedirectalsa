@@ -43,7 +43,6 @@ sudo pacman -S protontricks
 4. (Optional) Copy the `x86_64-{unix|windows}` directories to one of the following locations:
 
    * `$HOME/.local/lib/wine/` (Recommended)
-   * `/usr/lib/winedirectalsa/` (requires root privileges)
    * `/opt/winedirectalsa/` (requires root privileges)
 
    If you do not copy the files manually, the script will copy them for you.

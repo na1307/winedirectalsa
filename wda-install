@@ -12,7 +12,6 @@ HOME_LIB_WINE = Path.home() / '.local' / 'lib' / 'wine'
 
 WDA_PATHS = [
     HOME_LIB_WINE,
-    Path('/usr/lib/winedirectalsa'),
     Path('/opt/winedirectalsa')
 ]
 
