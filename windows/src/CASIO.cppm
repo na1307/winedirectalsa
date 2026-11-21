@@ -1,17 +1,10 @@
 module;
 
-#include <cstdint>
-#include <array>
-#include <vector>
-#include <atomic>
-#include <string>
-#include <thread>
-#include <mutex>
-
 #include <unknwn.h>
 
 export module casio;
 
+import std;
 import asio;
 
 // ReSharper disable once CppUseInternalLinkage
@@ -47,7 +40,7 @@ export class CASIO final : public ASIO::IASIO {
 
     void interleave(long index) noexcept;
 
-    void deinterleave(const int32_t *src, int index) noexcept;
+    void deinterleave(const std::int32_t *src, int index) noexcept;
 
     void latch_start_timestamp() noexcept;
 

@@ -1,6 +1,5 @@
 module;
 
-#include <cstdint>
 #include <cstring>
 
 #include "wine_unixlib.h"

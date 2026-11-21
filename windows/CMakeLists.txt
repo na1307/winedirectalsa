@@ -1,11 +1,10 @@
-cmake_minimum_required(VERSION 4.4)
+cmake_minimum_required(VERSION 4.5)
 
 set(CMAKE_C_STANDARD 23)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_C_COMPILER_WORKS 1)
-set(CMAKE_CXX_COMPILER_WORKS 1)
+set(CMAKE_CXX_SCAN_FOR_MODULES ON)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -40,19 +39,9 @@ add_custom_command(
 )
 
 target_include_directories(winedirectalsa
-        PRIVATE ${XWIN_SPLAT_PATH}/crt/include
-        PRIVATE ${XWIN_SPLAT_PATH}/sdk/include/ucrt
-        PRIVATE ${XWIN_SPLAT_PATH}/sdk/include/shared
-        PRIVATE ${XWIN_SPLAT_PATH}/sdk/include/um
         PRIVATE /usr/include/wine
         PRIVATE /opt/wine-devel/include/wine
         PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../common
-)
-
-target_link_directories(winedirectalsa
-        PRIVATE ${XWIN_SPLAT_PATH}/crt/lib/x64
-        PRIVATE ${XWIN_SPLAT_PATH}/sdk/lib/ucrt/x64
-        PRIVATE ${XWIN_SPLAT_PATH}/sdk/lib/um/x64
 )
 
 target_link_libraries(winedirectalsa
@@ -72,17 +61,7 @@ add_executable(wdactrl WIN32
 )
 
 target_include_directories(wdactrl
-        PRIVATE ${XWIN_SPLAT_PATH}/crt/include
-        PRIVATE ${XWIN_SPLAT_PATH}/sdk/include/ucrt
-        PRIVATE ${XWIN_SPLAT_PATH}/sdk/include/shared
-        PRIVATE ${XWIN_SPLAT_PATH}/sdk/include/um
         PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../common
-)
-
-target_link_directories(wdactrl
-        PRIVATE ${XWIN_SPLAT_PATH}/crt/lib/x64
-        PRIVATE ${XWIN_SPLAT_PATH}/sdk/lib/ucrt/x64
-        PRIVATE ${XWIN_SPLAT_PATH}/sdk/lib/um/x64
 )
 
 target_link_libraries(wdactrl PRIVATE winedirectalsa)

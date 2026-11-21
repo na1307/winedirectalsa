@@ -1,0 +1,3 @@
+[submodule "clang-msvc-sdk"]
+	path = clang-msvc-sdk
+	url = https://github.com/Nemirtingas/clang-msvc-sdk.git

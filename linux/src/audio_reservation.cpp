@@ -1,17 +1,11 @@
 module;
 
-#include <algorithm>
-#include <limits>
-#include <memory>
-#include <string>
-#include <string_view>
-#include <thread>
-#include <vector>
-
 #include <alsa/asoundlib.h>
 #include <systemd/sd-bus.h>
 
 module audio_reservation;
+
+import std;
 
 namespace {
     constexpr auto reserve_interface = "org.freedesktop.ReserveDevice1";

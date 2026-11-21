@@ -1,7 +1,10 @@
-set(CMAKE_SYSTEM_NAME Windows)
-set(CMAKE_SYSTEM_PROCESSOR AMD64)
+list(APPEND CMAKE_TRY_COMPILE_PLATFORM_VARIABLES
+    HOST_ARCH
+    MSVC_BASE
+    WINSDK_BASE
+    WINSDK_VER
+    LLVM_LTO
+    SIMD_ARCH
+)
 
-set(CMAKE_C_COMPILER clang-cl)
-set(CMAKE_CXX_COMPILER clang-cl)
-
-set(CMAKE_LINKER_TYPE LLD)
+include("${CMAKE_CURRENT_LIST_DIR}/../clang-msvc-sdk/clang-cl-msvc.cmake")

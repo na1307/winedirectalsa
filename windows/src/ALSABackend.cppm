@@ -1,10 +1,10 @@
 module;
 
-#include <cstdint>
-
 #include "linux_functions.h"
 
 export module alsa_backend;
+
+import std;
 
 export void make_realtime_thread();
 

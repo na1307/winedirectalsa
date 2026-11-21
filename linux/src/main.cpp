@@ -1,9 +1,8 @@
-#include <memory>
-
 #include <unixlib.h>
 
 #include "linux_functions.h"
 
+import std;
 import realtime_thread;
 import audio_reservation;
 import alsa_control;

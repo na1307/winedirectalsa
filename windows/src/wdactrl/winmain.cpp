@@ -1,12 +1,9 @@
-#include <array>
-#include <string>
-#include <vector>
-
 #include <windows.h>
 
 #include "resource.h"
 #include "linux_functions.h"
 
+import std;
 import wda;
 
 namespace {

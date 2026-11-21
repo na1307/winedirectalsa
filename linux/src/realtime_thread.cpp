@@ -1,9 +1,5 @@
 module;
 
-#include <algorithm>
-#include <cstdint>
-#include <cstdio>
-
 #include <sched.h>
 #include <sys/resource.h>
 #include <sys/syscall.h>
@@ -12,6 +8,8 @@ module;
 #include <systemd/sd-bus.h>
 
 module realtime_thread;
+
+import std;
 
 void make_realtime_thread() {
     sd_bus *bus = nullptr;

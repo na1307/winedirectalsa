@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.4)
+cmake_minimum_required(VERSION 4.5)
 
 project(winedirectalsa LANGUAGES NONE)
 
@@ -7,7 +7,7 @@ include(ExternalProject)
 ExternalProject_Add(windows
     SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/windows"
     BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/windows"
-    CMAKE_ARGS -DCMAKE_TOOLCHAIN_FILE=${CMAKE_CURRENT_SOURCE_DIR}/cmake/windows-clang-cl.cmake -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DXWIN_SPLAT_PATH=${XWIN_SPLAT_PATH}
+    CMAKE_ARGS -DCMAKE_TOOLCHAIN_FILE=${CMAKE_CURRENT_SOURCE_DIR}/cmake/windows-clang-cl.cmake -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DHOST_ARCH=x64 -DMSVC_BASE=${XWIN_SPLAT_PATH}/crt -DWINSDK_BASE=${XWIN_SPLAT_PATH}/sdk -DWINSDK_VER=.
     BUILD_ALWAYS TRUE
     INSTALL_COMMAND ""
 )

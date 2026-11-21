@@ -1,16 +1,12 @@
 module;
 
-#include <vector>
-#include <cstring>
-#include <format>
-#include <chrono>
-#include <thread>
-
 #include <alsa/asoundlib.h>
 
 #include "linux_functions.h"
 
 module alsa_control;
+
+import std;
 
 namespace {
     int open_pcm_with_retry(snd_pcm_t **pcm, const char *device_name, const snd_pcm_stream_t stream) {

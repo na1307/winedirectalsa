@@ -1,10 +1,5 @@
 module;
 
-#include <atomic>
-#include <thread>
-#include <filesystem>
-#include <mutex>
-
 #include <windows.h>
 
 #include "linux_functions.h"
@@ -250,7 +245,7 @@ ASIO::Error CASIO::start() {
 
         if (capture_active) {
             for (int ch = 0; ch < 2; ++ch) {
-                std::fill(input_buffers[ch][0].begin(), input_buffers[ch][0].end(), 0);
+                std::ranges::fill(input_buffers[ch][0], 0);
             }
         }
 
