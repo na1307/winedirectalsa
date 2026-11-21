@@ -52,15 +52,24 @@ jobs:
 
     - name: Cache xwin
       uses: actions/cache@v6
+      id: cache-xwin
       with:
         path: ${{ env.XWIN_CACHE_PATH }}
         key: xwc
 
     - name: Splat Windows SDK
+      if: steps.cache-xwin.outputs.cache-hit != 'true'
       run: ./xwin --arch x86_64 --accept-license --cache-dir ./${{ env.XWIN_CACHE_PATH }} --manifest-version 18 splat --include-debug-libs --preserve-ms-arch-notation --output ./${{ env.SPLAT_PATH }}
 
     - name: Extract MSVC STL Modules
       run: bash scripts/extract-msvc-modules.sh "$XWIN_CACHE_PATH" "$SPLAT_PATH"
+
+    - name: Verify MSVC STL Modules
+      run: |
+        ls -l "$SPLAT_PATH/crt/modules"
+        test -f "$SPLAT_PATH/crt/modules/modules.json"
+        test -f "$SPLAT_PATH/crt/modules/std.ixx"
+        test -f "$SPLAT_PATH/crt/modules/std.compat.ixx"
 
     - name: Setup cmake
       uses: jwlawson/actions-setup-cmake@v2

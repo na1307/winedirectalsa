@@ -43,6 +43,13 @@ for vsix in "${packages[@]}"; do
             cp -a "$temp_dir/$prefix/modules/." \
                 "$SPLAT_PATH/crt/modules/"
 
+            for file in modules.json std.ixx std.compat.ixx; do
+                if [[ ! -f "$SPLAT_PATH/crt/modules/$file" ]]; then
+                    echo "Missing MSVC module file: $file" >&2
+                    exit 1
+                fi
+            done
+
             echo "MSVC STL modules extracted successfully."
             exit 0
         fi
