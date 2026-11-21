@@ -62,7 +62,12 @@ jobs:
       run: ./xwin --arch x86_64 --accept-license --cache-dir ./${{ env.XWIN_CACHE_PATH }} --manifest-version 18 splat --include-debug-libs --preserve-ms-arch-notation --output ./${{ env.SPLAT_PATH }}
 
     - name: Extract MSVC STL Modules
-      run: bash scripts/extract-msvc-modules.sh "$XWIN_CACHE_PATH" "$SPLAT_PATH"
+      run: |
+        bash scripts/extract-msvc-modules.sh \
+          "$XWIN_CACHE_PATH" "$SPLAT_PATH"
+
+        echo "VCToolsInstallDir=$PWD/$SPLAT_PATH/crt" \
+          >> "$GITHUB_ENV"
 
     - name: Verify MSVC STL Modules
       run: |
